@@ -6,6 +6,8 @@ Projects
 {% block content %}
         <h1>{{ project_object.name }}</h1>
         <p>{{ project_object.description }}</p>
+        <h1>Task</h1>
+        <p><a href="{% url "create_task" %}">Create a new task</a></p>
         {% if project_object.tasks.all %}
     <table>
             <thead>
