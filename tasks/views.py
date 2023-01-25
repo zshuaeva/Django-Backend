@@ -12,16 +12,12 @@ def create_task(request):
         return redirect("list_projects")
     else:
         form = TaskForm()
-    context = {
-        "form": form
-    }
+    context = {"form": form}
     return render(request, "create_task.html", context)
 
 
 @login_required
 def show_my_tasks(request):
     tasks = Task.objects.filter(assignee=request.user)
-    context = {
-        "task_list": tasks
-    }
+    context = {"task_list": tasks}
     return render(request, "show_my_tasks.html", context)

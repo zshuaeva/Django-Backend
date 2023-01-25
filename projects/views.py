@@ -6,9 +6,7 @@ from projects.forms import CreateProject
 
 @login_required
 def list_projects(request):
-    projects = Project.objects.filter(
-        owner=request.user
-    )
+    projects = Project.objects.filter(owner=request.user)
     context = {
         "project_list": projects,
     }
@@ -35,7 +33,5 @@ def create_project(request):
             return redirect("list_projects")
     else:
         form = CreateProject()
-    context = {
-        "form": form
-    }
+    context = {"form": form}
     return render(request, "projects/create_project.html", context)

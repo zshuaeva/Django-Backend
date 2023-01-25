@@ -1,14 +1,14 @@
 {% extends "base.html" %}
-{% block title %}
-My Task
-{% endblock title %}
 
+{% block title %}
+    My Task
+{% endblock title %}
 {% block content %}
-        <h1>My Tasks</h1>
-        <h1>{{ task_list.name }}</h1>
-        <p>{{ task_list.description }}</p>
-        {% if task_list.all %}
-    <table>
+    <h1>My Tasks</h1>
+    <h1>{{ task_list.name }}</h1>
+    <p>{{ task_list.description }}</p>
+    {% if task_list.all %}
+        <table>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -19,16 +19,16 @@ My Task
             </thead>
             <tbody>
                 {% for item in task_list.all %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.start_date }}</td>
-                    <td>{{ item.due_date }}</td>
-                    <td>{{ item.is_completed|yesno }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.start_date }}</td>
+                        <td>{{ item.due_date }}</td>
+                        <td>{{ item.is_completed|yesno }}</td>
+                    </tr>
                 {% endfor %}
             </tbody>
-    </table>
-        {% else %}
-            <p>You have no tasks</p>
-        {% endif %}
+        </table>
+    {% else %}
+        <p>You have no tasks</p>
+    {% endif %}
 {% endblock %}

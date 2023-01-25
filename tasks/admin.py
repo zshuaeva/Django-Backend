@@ -10,5 +10,5 @@ class Task(admin.ModelAdmin):
         "due_date",
         "is_completed",
         "project",
-        "assignee"
+        "assignee",
     )

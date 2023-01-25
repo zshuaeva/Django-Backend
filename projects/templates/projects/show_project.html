@@ -1,15 +1,17 @@
 {% extends "base.html" %}
-{% block title %}
-Projects
-{% endblock title %}
 
+{% block title %}
+    Projects
+{% endblock title %}
 {% block content %}
-        <h1>{{ project_object.name }}</h1>
-        <p>{{ project_object.description }}</p>
-        <h1>Task</h1>
-        <p><a href="{% url "create_task" %}">Create a new task</a></p>
-        {% if project_object.tasks.all %}
-    <table>
+    <h1>{{ project_object.name }}</h1>
+    <p>{{ project_object.description }}</p>
+    <h1>Task</h1>
+    <p>
+        <a href="{% url "create_task" %}">Create a new task</a>
+    </p>
+    {% if project_object.tasks.all %}
+        <table>
             <thead>
                 <tr>
                     <th>Name</th>
@@ -21,17 +23,17 @@ Projects
             </thead>
             <tbody>
                 {% for item in project_object.tasks.all %}
-                <tr>
-                    <td>{{ item.name }}</td>
-                    <td>{{ item.assignee }}</td>
-                    <td>{{ item.start_date }}</td>
-                    <td>{{ item.due_date }}</td>
-                    <td>{{ item.is_completed|yesno }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.assignee }}</td>
+                        <td>{{ item.start_date }}</td>
+                        <td>{{ item.due_date }}</td>
+                        <td>{{ item.is_completed|yesno }}</td>
+                    </tr>
                 {% endfor %}
             </tbody>
-    </table>
-        {% else %}
-            <p>This project has no tasks</p>
-        {% endif %}
+        </table>
+    {% else %}
+        <p>This project has no tasks</p>
+    {% endif %}
 {% endblock %}
